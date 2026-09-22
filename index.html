@@ -884,6 +884,12 @@
     .progress-bar{background:#35163f}.progress-fill{background:linear-gradient(90deg,#cf2eff,#d9a85d)}
     .step{color:#866c94}.step h4{color:#eee4f3}.step p,.hint,.lead,.journey-copy,.phase-card p{color:#b5a5c0}.step-num{background:#12051b;border-color:#69317f;color:#d9a85d}.step.active .step-num{background:#d832ee;border-color:#d832ee}.step.done .step-num{background:#b28a4f;border-color:#b28a4f}.quote{background:rgba(24,7,34,.8)}.quote p{color:#eee4f3}.quote span{color:#d47af2}
     .ghost-link{background:rgba(18,5,27,.75);border-color:#5b2b72;color:#d47af2}
+    .book-origin-card{background:linear-gradient(145deg,rgba(29,8,43,.97),rgba(10,2,17,.99));border-color:#6a337f;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+    .book-origin-card h1,.book-origin-card .lead{color:#f2eafa}.book-flow div{background:rgba(12,3,19,.82);border-color:#5b2b72;color:#b5a5c0}.book-flow strong{color:#efb2ff}.origin-note{color:#a893b3}
+    .system-visual{position:relative;min-height:420px;border-radius:22px;overflow:hidden;background:radial-gradient(circle at center,rgba(200,80,255,.2),transparent 28%),linear-gradient(150deg,#190829,#08020f);border:1px solid #6a337f;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+    .system-visual:before{content:'LECTURA DEL SISTEMA';position:absolute;top:24px;left:26px;color:#efb2ff;letter-spacing:.18em;font-size:10px}.flow-orbit{position:absolute;inset:16% 15%;border:1px solid rgba(226,60,255,.24);border-radius:50%}.orbit-b{inset:25% 24%;border-color:rgba(217,168,93,.35)}
+    .flow-line{position:absolute;background:linear-gradient(90deg,transparent,#c77bff,transparent);opacity:.75}.line-top,.line-bottom{width:2px;height:63%;left:50%;top:18%}.line-right,.line-left{height:2px;width:63%;top:50%;left:18%}.flow-node{position:absolute;width:95px;height:95px;border:1px solid #a657d0;border-radius:50%;display:grid;place-items:center;align-content:center;gap:5px;background:rgba(16,4,24,.9);box-shadow:0 0 20px rgba(226,60,255,.25);color:#f2eafa;text-align:center}.flow-node span{font-size:26px;color:#efb2ff}.flow-node small{font-size:8px;letter-spacing:.12em}.node-org{top:12%;left:calc(50% - 47px)}.node-tech{right:9%;top:calc(50% - 47px)}.node-talent{bottom:12%;left:calc(50% - 47px)}.node-process{left:9%;top:calc(50% - 47px)}
+    .flow-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;display:grid;place-items:center;align-content:center;text-align:center;border-radius:50%;background:radial-gradient(circle,#512066,#1a0728);border:1px solid #e273ff;box-shadow:0 0 38px rgba(226,60,255,.4),inset 0 0 25px rgba(226,60,255,.18)}.flow-core b{font-family:'Cormorant Garamond',serif;font-size:40px;color:#f2eafa;letter-spacing:.08em}.flow-core small{font-size:9px;color:#e3bd78;letter-spacing:.08em;max-width:100px}@media(max-width:1050px){.system-visual{min-height:300px}}
     h1,h2,.question-card h2,.journey-title,.modal-card h2{color:#f2eafa}.screen,.question-card{background:linear-gradient(135deg,rgba(42,13,58,.85),rgba(14,4,22,.92));border-color:#6a337f;box-shadow:0 18px 50px rgba(0,0,0,.32)}h1 em,.journey-title span{color:#e273ff}
     .option{background:rgba(12,3,19,.78);color:#eee4f3}.option:hover,.option.selected{border-color:#e23cff;background:rgba(66,18,84,.65);box-shadow:0 10px 30px rgba(226,60,255,.12)}.option .icon{background:rgba(226,60,255,.12);color:#e273ff}.option .copy strong{color:#f2eafa}.option .copy span{color:#b5a5c0}.radio{border-color:#7c568b}.option.selected .radio{background:#e23cff;border-color:#e23cff}
     .art-card{background:linear-gradient(180deg,rgba(27,8,37,.45),rgba(16,4,25,.95)),radial-gradient(circle at 70% 30%,rgba(190,75,255,.28),transparent 26%)}.landscape{opacity:.62;filter:hue-rotate(260deg) saturate(1.4)}.btn,.cta{background:linear-gradient(100deg,#d523f0,#ef58ff);color:#fff}.confidential{color:#a893b3}.back{color:#b5a5c0}
@@ -893,14 +899,14 @@
   <div class="shell">
     <aside>
       <div class="logo">
-        <div class="mark">K</div>
+        <div class="mark">M</div>
         <div class="brand-title">MPA<br>Flow</div>
         <div class="brand-sub">MPA Flow · Orientación</div>
       </div>
 
       <div class="progress-card">
         <small>Tu recorrido</small>
-        <strong id="sideProgress">1 of 5</strong>
+        <strong id="sideProgress">Inicio</strong>
         <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
       </div>
 
@@ -938,116 +944,101 @@ const questions = [
     title:"Empecemos por observar el sistema.",
     emphasis:"momento del sistema.",
     subtitle:"Antes de orientar una intervención",
-    hint:"This helps personalize the result without asking for personal information upfront.",
+    hint:"Un primer mapa para entender qué está pasando antes de decidir qué cambiar.",
     art:"La primera señal es el contexto: qué sistema estás intentando hacer evolucionar.",
     fields:true
   },
   {
     id:'friction',
     title:"¿Dónde sentís más fricción hoy?",
-    emphasis:"most constrained",
+    emphasis:"fricción hoy",
     subtitle:"Elegí la opción que más se parece a tu realidad.",
-    hint:"This helps identify the first signal: what kind of growth friction is showing up.",
-    art:"La complejidad deja señales antes de convertirse en un problema.",
+    hint:"La fricción no es un fallo: es una señal de que el sistema necesita otra configuración.",
+    art:"La fricción deja señales antes de convertirse en un problema mayor.",
     options:[
-      {score:'growth', icon:'↗', label:'Getting enough of the right clients or demand', desc:'Visibility, positioning, marketing, sales'},
-      {score:'structure', icon:'⚙', label:'Systems and processes', desc:'Operations, consistency, delegation, delivery'},
-      {score:'leadership', icon:'👥', label:'My team needs too much direction from me', desc:'Ownership, decisions, leadership capacity'},
-      {score:'alignment', icon:'◇', label:'Priorities feel disconnected', desc:'Strategy, operations, message, and people are not moving together'},
-      {score:'scale', icon:'⌁', label:'We are ready for a next stage, but need a roadmap', desc:'Growth, transition, or scale readiness'}
+      {score:'growth', icon:'↗', label:'Necesitamos crecer, pero la demanda no es previsible', desc:'Posicionamiento, propuesta de valor y llegada a las personas correctas'},
+      {score:'structure', icon:'⚙', label:'La operación no sostiene el ritmo', desc:'Procesos, consistencia, delegación y capacidad de entrega'},
+      {score:'leadership', icon:'👥', label:'Hay demasiada dependencia de una persona', desc:'Decisiones, autonomía del equipo y capacidad de liderazgo'},
+      {score:'alignment', icon:'◇', label:'Las prioridades no están conectadas', desc:'Estrategia, procesos, tecnología y personas avanzan en direcciones distintas'},
+      {score:'scale', icon:'⌁', label:'Estamos listos para crecer, pero falta un mapa', desc:'Transición, escala y condiciones para sostener el próximo momento'}
     ]
   },
   {
     id:'complexity',
     title:"Cuando aumenta la complejidad, ¿qué aparece primero?",
-    emphasis:"complexity increases",
+    emphasis:"aumenta la complejidad",
     subtitle:"Pick the pattern you recognize most.",
-    hint:"This step checks how the business responds when pressure rises.",
-    art:"The next stage asks for a different kind of clarity.",
+    hint:"Observemos qué patrón se repite cuando el sistema tiene más demanda o más presión.",
+    art:"Cada etapa de crecimiento pide una configuración distinta.",
     options:[
-      {score:'growth', icon:'◌', label:'We need more visibility before we can grow', desc:'The challenge is demand quality and market awareness'},
-      {score:'structure', icon:'⧉', label:'Delivery gets messy or inconsistent', desc:'The challenge is operational structure'},
-      {score:'leadership', icon:'△', label:'Decisions slow down because they wait for me', desc:'The challenge is decision rhythm and ownership'},
-      {score:'alignment', icon:'⇄', label:'People work hard, but in different directions', desc:'The challenge is shared focus'},
-      {score:'scale', icon:'▱', label:'Growth creates risk before it creates freedom', desc:'The challenge is scale readiness'}
+      {score:'growth', icon:'◌', label:'El valor no se entiende con claridad', desc:'La oportunidad está en ordenar el mensaje y la llegada'},
+      {score:'structure', icon:'⧉', label:'La entrega se vuelve irregular', desc:'La oportunidad está en diseñar procesos repetibles'},
+      {score:'leadership', icon:'△', label:'Las decisiones esperan a una persona', desc:'La oportunidad está en distribuir criterio y responsabilidad'},
+      {score:'alignment', icon:'⇄', label:'Todos trabajan, pero no hacia lo mismo', desc:'La oportunidad está en alinear prioridades y conversaciones'},
+      {score:'scale', icon:'▱', label:'El crecimiento empieza a generar riesgo', desc:'La oportunidad está en preparar capacidad antes de acelerar'}
     ]
   },
   {
     id:'dependency',
     title:"Si te alejaras durante 30 días, ¿qué pasaría?",
-    emphasis:"stepped away",
-    subtitle:"Choose the most honest answer.",
-    hint:"This step helps separate structure, leadership, alignment, and scale signals.",
-    art:"A business reveals its growth edge when the founder is not in every room.",
+    emphasis:"te alejaras durante 30 días",
+    subtitle:"Elegí la respuesta más honesta.",
+    hint:"Esta pregunta muestra dónde el sistema todavía depende de vos para seguir funcionando.",
+    art:"El sistema revela su próximo paso cuando no todo pasa por una sola persona.",
     options:[
-      {score:'growth', icon:'↗', label:'The work would continue, but new opportunities would slow down', desc:'Visibility and growth generation still need attention'},
-      {score:'structure', icon:'⚙', label:'Operations would continue, but many details would break or drift', desc:'Systems are not yet repeatable enough'},
-      {score:'leadership', icon:'👥', label:'Important decisions would stop or wait', desc:'Decision-making still depends too much on one person'},
-      {score:'alignment', icon:'◇', label:'The team would keep moving, but priorities would become unclear', desc:'Shared direction needs strengthening'},
-      {score:'scale', icon:'⌁', label:'I am not sure the business is ready for that yet', desc:'The next stage needs a stronger readiness map'}
+      {score:'growth', icon:'↗', label:'El trabajo sigue, pero las oportunidades se frenan', desc:'La generación de demanda todavía depende de vos'},
+      {score:'structure', icon:'⚙', label:'La operación pierde consistencia', desc:'Los procesos aún no son suficientemente repetibles'},
+      {score:'leadership', icon:'👥', label:'Las decisiones importantes quedan en pausa', desc:'El criterio y la autoridad todavía están concentrados'},
+      {score:'alignment', icon:'◇', label:'El equipo avanza, pero se desordena la prioridad', desc:'Falta una dirección compartida para decidir'},
+      {score:'scale', icon:'⌁', label:'No sabemos si el sistema está listo para ese salto', desc:'Hace falta mapear capacidad, riesgos y condiciones'}
     ]
   }
 ];
 
 const outcomes = {
   growth:{
-    name:'Expand',
-    module:'Visibility',
-    title:'Your Next Evolution Opportunity',
-    headline:'Visibility & Demand',
-    text:'Your opportunity is to make the value of your work easier for the right people to see, understand, and act on. The work may already be strong; the next stage asks for clearer positioning, stronger visibility, and more intentional business development.',
-    why:['Visibility creates momentum before capacity is added.','A clearer message helps the right people recognize themselves in your offer.','A repeatable demand rhythm lowers the dependency on referrals and chance.'],
-    next:'Clarify your positioning and build a repeatable visibility rhythm.',
-    video:'Video 1: Christene speaks to practitioners whose work is strong, but whose value is not yet visible enough to the right audience.',
-    resources:['Positioning Chapter','Visibility Episode','Demand Clarity Framework'],
+    name:'Expandir', module:'Demanda y posicionamiento', title:'Tu oportunidad de evolución', headline:'Demanda y posicionamiento',
+    text:'El sistema necesita hacer más visible su valor y volver previsible la llegada de nuevas oportunidades. La solución no es comunicar más: es ordenar la propuesta, la experiencia y el camino hacia la consulta.',
+    why:['Un mensaje claro ayuda a que las personas correctas se reconozcan.','Una propuesta ordenada reduce la dependencia de recomendaciones aisladas.','Una cadencia de visibilidad convierte la intención en movimiento sostenido.'],
+    next:'Clarificar la propuesta y diseñar un flujo de llegada que pueda sostenerse.',
+    video:'Una lectura de cómo ordenar la propuesta para que el mercado entienda el valor y pueda dar el próximo paso.',
+    resources:['Mapa de propuesta','Ritmo de visibilidad','Guía de consulta inicial'],
     scores:{growth:4,structure:6,leadership:6,clarity:5}
   },
   structure:{
-    name:'Strengthen',
-    module:'Structure',
-    title:'Your Next Evolution Opportunity',
-    headline:'Structure',
-    text:'Growth is happening. The opportunity now is building systems that allow growth to continue without creating operational strain. More demand will only help if the business can absorb it with clarity, consistency, and delegation.',
-    why:['Without strong systems, more growth creates more complexity.','Operational strain limits capacity, slows the team, and increases founder dependency.','Building structure creates freedom, stability, and sustainable growth.'],
-    next:'Focus on systems, delegation, and operational clarity.',
-    video:'Video 2: Christene reflects on the moment growth starts asking for better systems instead of more effort.',
-    resources:['Chapter 8','Episode 12','Delegation That Lasts'],
+    name:'Fortalecer', module:'Procesos y operación', title:'Tu oportunidad de evolución', headline:'Procesos y operación',
+    text:'Hay una intención de crecer, pero la operación todavía no puede sostener ese ritmo sin sumar esfuerzo, errores o demoras. La solución es convertir el conocimiento disperso en un flujo claro, repetible y visible para el equipo.',
+    why:['Un proceso visible permite detectar dónde se corta el flujo.','La documentación adecuada libera tiempo sin burocratizar el trabajo.','Delegar con criterio reduce la dependencia y mejora la consistencia.'],
+    next:'Mapear el flujo crítico, ordenar responsabilidades y elegir el primer proceso a configurar.',
+    video:'Una lectura de cómo pasar del esfuerzo heroico a una operación que sostiene el crecimiento.',
+    resources:['Mapa de flujo operativo','Matriz de responsabilidades','Ritual de mejora continua'],
     scores:{growth:7,structure:4,leadership:5,clarity:6}
   },
   leadership:{
-    name:'Lead',
-    module:'Leadership',
-    title:'Your Next Evolution Opportunity',
-    headline:'Leadership',
-    text:'Your opportunity is not simply to do more. It is to create more clarity around ownership, decisions, and direction. As the business evolves, leadership becomes the multiplier.',
-    why:['Talented teams still need shared direction.','Small misalignments compound when the business grows.','Leadership clarity helps the business move without everything passing through one person.'],
-    next:'Strengthen leadership capacity, decision rhythm, and team ownership.',
-    video:'Video 3: Christene speaks to the transition from being the person everything depends on to becoming the leader the next stage requires.',
-    resources:['Leadership Chapter','From Operator to Leader','Team Ownership Framework'],
+    name:'Distribuir', module:'Talento y decisiones', title:'Tu oportunidad de evolución', headline:'Talento y decisiones',
+    text:'El sistema está concentrando demasiado criterio en una persona. El próximo paso es hacer explícitos los roles, las decisiones y las condiciones para que el equipo pueda responder con autonomía.',
+    why:['La autonomía necesita límites y criterios claros.','Distribuir decisiones libera capacidad para pensar el próximo nivel.','Un equipo alineado reduce cuellos de botella y dependencia.'],
+    next:'Definir qué decisiones se distribuyen, con qué información y con qué ritmo de revisión.',
+    video:'Una lectura sobre cómo pasar de ser imprescindible en todo a diseñar un sistema donde el talento pueda responder.',
+    resources:['Mapa de decisiones','Diseño de roles','Ritmo de liderazgo'],
     scores:{growth:7,structure:6,leadership:4,clarity:5}
   },
   alignment:{
-    name:'Align',
-    module:'Alignment',
-    title:'Your Next Evolution Opportunity',
-    headline:'Alignment',
-    text:'Your opportunity is to bring strategy, people, message, and execution back into shared direction. The issue may not be lack of effort; it may be that different parts of the business are solving different problems.',
-    why:['Misalignment wastes energy even when everyone is working hard.','Clear priorities help teams choose what matters most.','Alignment turns scattered effort into focused progress.'],
-    next:'Create a shared operating picture: priorities, ownership, message, and next decisions.',
-    video:'Video 4: Christene reflects on why effort alone is not enough when the business is pulling in multiple directions.',
-    resources:['Alignment Chapter','Priority Reset Episode','Operating Clarity Map'],
+    name:'Alinear', module:'Dirección compartida', title:'Tu oportunidad de evolución', headline:'Dirección compartida',
+    text:'Hay esfuerzo, pero no siempre hay una misma lectura del sistema. La solución es conectar prioridades, conversaciones, procesos y tecnología para que cada parte empuje en la misma dirección.',
+    why:['La desalineación consume energía aunque todos trabajen mucho.','Una prioridad compartida facilita elegir y renunciar.','Conectar las partes convierte esfuerzo disperso en avance.'],
+    next:'Construir una imagen operativa común: qué importa, quién decide y qué sigue.',
+    video:'Una lectura sobre cómo volver a conectar estrategia, personas y ejecución.',
+    resources:['Mapa de alineación','Conversación de prioridades','Tablero de decisiones'],
     scores:{growth:6,structure:6,leadership:5,clarity:4}
   },
   scale:{
-    name:'Scale',
-    module:'Scale Readiness',
-    title:'Your Next Evolution Opportunity',
-    headline:'Scale Readiness',
-    text:'Your opportunity is to prepare the business for its next chapter without breaking what already works. This is less about speed and more about designing growth that can be sustained.',
-    why:['Scaling too early can amplify weak points.','A growth roadmap helps protect what already works.','Future readiness creates better decisions before pressure increases.'],
-    next:'Map the next stage of growth before adding more complexity.',
-    video:'Video 5: Christene speaks to owners who are ready to grow, transition, or prepare the business for what comes next.',
-    resources:['Scale Readiness Chapter','Next Chapter Episode','Growth Roadmap Canvas'],
+    name:'Preparar', module:'Evolución y escala', title:'Tu oportunidad de evolución', headline:'Evolución y escala',
+    text:'El sistema está entrando en un nuevo momento. Antes de sumar velocidad, conviene entender qué debe cambiar para que el crecimiento no rompa lo que hoy funciona.',
+    why:['Crecer sin capacidad amplifica los puntos débiles.','Un mapa de evolución ayuda a ordenar las decisiones.','Preparar el sistema permite acelerar con menos fricción.'],
+    next:'Definir el próximo objetivo, las capacidades necesarias y el orden de los movimientos.',
+    video:'Una lectura sobre cómo diseñar el próximo paso sin perder la fluidez del sistema.',
+    resources:['Mapa de evolución','Diagnóstico de capacidad','Hoja de ruta del próximo paso'],
     scores:{growth:6,structure:5,leadership:5,clarity:4}
   }
 };
@@ -1055,79 +1046,69 @@ const outcomes = {
 
 const journeys = {
   growth:{
-    title:'33-Day Visibility Evolution Journey',
-    short:'Clarify positioning. Increase visibility. Build demand momentum.',
-    focus:'Visibility',
+    title:'Recorrido de demanda y posicionamiento', short:'Ordená tu propuesta y construí un ritmo de llegada sostenible.', focus:'Demanda',
     phases:[
-      ['Days 1–11','Observe','Notice where your value is clear, hidden, or inconsistent.'],
-      ['Days 12–22','Strengthen','Refine message, proof, authority, and referral pathways.'],
-      ['Days 23–33','Integrate','Create a repeatable visibility rhythm you can sustain.']
+      ['Etapa 1','Observar','Reconocer dónde el valor se entiende, se pierde o se contradice.'],
+      ['Etapa 2','Configurar','Ordenar propuesta, evidencia y camino hacia la consulta.'],
+      ['Etapa 3','Evolucionar','Instalar un ritmo de visibilidad que puedas sostener.']
     ],
-    includes:['Positioning prompts','Customer story worksheet','Weekly visibility actions','Recommended content rhythm']
+    includes:['Mapa de propuesta','Historias de valor','Acciones de visibilidad','Ritmo de contenidos']
   },
   structure:{
-    title:'33-Day Structure Evolution Journey',
-    short:'Strengthen systems. Reduce founder dependency. Build operational clarity.',
-    focus:'Structure',
+    title:'Recorrido de procesos y operación', short:'Convertí el conocimiento disperso en un flujo visible y repetible.', focus:'Procesos',
     phases:[
-      ['Days 1–11','Observe','Map the recurring friction, bottlenecks, and decisions.'],
-      ['Days 12–22','Strengthen','Document one critical process and clarify ownership.'],
-      ['Days 23–33','Integrate','Build a rhythm for delegation, accountability, and review.']
+      ['Etapa 1','Observar','Mapear la fricción, los cortes y las decisiones recurrentes.'],
+      ['Etapa 2','Configurar','Documentar un flujo crítico y clarificar responsabilidades.'],
+      ['Etapa 3','Evolucionar','Crear un ritmo de delegación, revisión y mejora.']
     ],
-    includes:['Process mapping worksheet','Delegation checklist','Weekly operating rhythm','Accountability prompts']
+    includes:['Mapa de flujo','Checklist de delegación','Ritmo operativo','Preguntas de revisión']
   },
   leadership:{
-    title:'33-Day Leadership Evolution Journey',
-    short:'Strengthen ownership. Improve decision-making. Develop leadership capacity.',
-    focus:'Leadership',
+    title:'Recorrido de talento y decisiones', short:'Distribuí criterio para que el sistema no dependa de una sola persona.', focus:'Talento',
     phases:[
-      ['Days 1–11','Observe','Identify where decisions still depend on one person.'],
-      ['Days 12–22','Strengthen','Clarify roles, ownership, and decision boundaries.'],
-      ['Days 23–33','Integrate','Create a leadership rhythm that supports the next stage.']
+      ['Etapa 1','Observar','Identificar dónde las decisiones todavía esperan una persona.'],
+      ['Etapa 2','Configurar','Clarificar roles, criterio y límites de decisión.'],
+      ['Etapa 3','Evolucionar','Instalar un ritmo de liderazgo para el próximo momento.']
     ],
-    includes:['Decision audit','Ownership map','Leadership reflection prompts','Team conversation guide']
+    includes:['Auditoría de decisiones','Mapa de autonomía','Preguntas de liderazgo','Guía de conversación']
   },
   alignment:{
-    title:'33-Day Alignment Evolution Journey',
-    short:'Connect priorities, people, message, and execution.',
-    focus:'Alignment',
+    title:'Recorrido de dirección compartida', short:'Conectá prioridades, personas, tecnología y ejecución.', focus:'Alineación',
     phases:[
-      ['Days 1–11','Observe','Notice where effort is scattered or priorities compete.'],
-      ['Days 12–22','Strengthen','Choose one shared focus and clarify trade-offs.'],
-      ['Days 23–33','Integrate','Translate alignment into decisions, meetings, and actions.']
+      ['Etapa 1','Observar','Reconocer dónde el esfuerzo se dispersa o compiten prioridades.'],
+      ['Etapa 2','Configurar','Elegir un foco compartido y explicitar renuncias.'],
+      ['Etapa 3','Evolucionar','Llevar la alineación a decisiones, reuniones y acciones.']
     ],
-    includes:['Priority alignment map','Team focus prompts','Execution checklist','Meeting rhythm guide']
+    includes:['Mapa de prioridades','Foco de equipo','Checklist de ejecución','Ritmo de reuniones']
   },
   scale:{
-    title:'33-Day Scale Readiness Journey',
-    short:'Prepare the business for its next stage without breaking what works.',
-    focus:'Scale Readiness',
+    title:'Recorrido de evolución y escala', short:'Prepará el sistema para crecer sin romper lo que ya funciona.', focus:'Evolución',
     phases:[
-      ['Days 1–11','Observe','Identify what must be protected before growth accelerates.'],
-      ['Days 12–22','Strengthen','Map capacity, risks, and next-stage requirements.'],
-      ['Days 23–33','Integrate','Sequence the next growth moves with clarity.']
+      ['Etapa 1','Observar','Identificar qué hay que proteger antes de acelerar.'],
+      ['Etapa 2','Configurar','Mapear capacidad, riesgos y condiciones del próximo momento.'],
+      ['Etapa 3','Evolucionar','Ordenar los movimientos de crecimiento con claridad.']
     ],
-    includes:['Scale readiness checklist','Risk map','Capacity prompts','Growth roadmap canvas']
+    includes:['Checklist de preparación','Mapa de riesgos','Preguntas de capacidad','Hoja de ruta']
   }
 };
 
 const modules = [
-  {key:'growth', name:'Visibility', sub:'Expand demand and market clarity', icon:'↗'},
-  {key:'structure', name:'Structure', sub:'Build systems that sustain growth', icon:'⚙'},
-  {key:'leadership', name:'Leadership', sub:'Lead your team and business with clarity', icon:'👥'},
-  {key:'alignment', name:'Alignment', sub:'Connect priorities, people, and execution', icon:'⇄'},
-  {key:'scale', name:'Scale Readiness', sub:'Prepare the business for its next chapter', icon:'⌁'}
+  {key:'growth', name:'Demanda', sub:'Hacer visible el valor y la propuesta', icon:'↗'},
+  {key:'structure', name:'Procesos', sub:'Diseñar un flujo que sostenga el ritmo', icon:'⚙'},
+  {key:'leadership', name:'Talento', sub:'Distribuir criterio y autonomía', icon:'👥'},
+  {key:'alignment', name:'Organización', sub:'Conectar prioridades y decisiones', icon:'⇄'},
+  {key:'scale', name:'Evolución', sub:'Preparar el próximo momento del sistema', icon:'⌁'}
 ];
 
 let state = { step:0, answers:{}, selections:{}, lead:{} };
 
 const businessLabels = {
-  contractor: 'Contractor',
-  trade: 'Trade / Service Business',
-  builder: 'Builder / Developer',
-  professional: 'Professional Services',
-  family: 'Family Business',
-  other: 'Other Business'
+  contractor: 'Construcción',
+  trade: 'Servicios',
+  builder: 'Desarrollo',
+  professional: 'Servicios profesionales',
+  family: 'Empresa familiar',
+  other: 'Otra organización'
 };
 
 const submissions = JSON.parse(localStorage.getItem('ff_growth_submissions') || '[]');
@@ -1137,7 +1118,7 @@ const app = document.getElementById('app');
 function updateProgress(){
   const p = state.step;
   if(p === 0){
-    document.getElementById('sideProgress').innerText = 'Book entry';
+    document.getElementById('sideProgress').innerText = 'Inicio';
     document.getElementById('progressFill').style.width = '8%';
     document.querySelectorAll('.step').forEach(el=>el.classList.remove('active','done'));
     return;
@@ -1193,10 +1174,14 @@ function renderBookIntro(){
   updateProgress();
   app.innerHTML = `
     <div class="screen book-intro">
-      <div class="book-cover-wrap">
-        <div class="book-cover">
-          <img src="${bookCoverImage}" alt="Foundation First conceptual book cover">
-        </div>
+      <div class="book-cover-wrap system-visual" aria-label="Mapa visual de observación del sistema">
+        <div class="flow-orbit orbit-a"></div><div class="flow-orbit orbit-b"></div>
+        <div class="flow-line line-top"></div><div class="flow-line line-right"></div><div class="flow-line line-bottom"></div><div class="flow-line line-left"></div>
+        <div class="flow-node node-org"><span>◉</span><small>ORGANIZACIÓN</small></div>
+        <div class="flow-node node-tech"><span>◇</span><small>TECNOLOGÍA</small></div>
+        <div class="flow-node node-talent"><span>∞</span><small>TALENTO</small></div>
+        <div class="flow-node node-process"><span>⌁</span><small>PROCESOS</small></div>
+        <div class="flow-core"><b>FLOW</b><small>observar · configurar · evolucionar</small></div>
       </div>
 
       <div class="book-origin-card">
@@ -1245,28 +1230,28 @@ function renderQuestion(){
           <p class="lead">${q.hint}</p>
 
           <div class="question-card">
-            <h2>What kind of business are you building?</h2>
-            <p class="hint">No name or email required. This tool gives value first. Personal details are optional at the end if someone wants a copy of the result.</p>
+            <h2>¿Qué tipo de sistema estás haciendo crecer?</h2>
+            <p class="hint">No pedimos nombre ni correo para orientarte. Primero recibís una lectura útil; los datos de contacto son opcionales al final.</p>
             <div class="lead-form">
               <div class="field wide">
-                <label>Business type</label>
+                <label>Tipo de organización</label>
                 <select id="leadBusiness">
                   ${businessOptions(state.lead.businessType)}
                 </select>
               </div>
               <div class="field wide">
-                <label>Main objective right now</label>
+                <label>Objetivo principal hoy</label>
                 <select id="leadGoal">
                   ${goalOptions(state.lead.goal)}
                 </select>
               </div>
             </div>
-            <p class="privacy-note">This first step only adds context so the result can feel more relevant.</p>
+            <p class="privacy-note">Este primer paso agrega contexto para que la orientación sea más precisa.</p>
           </div>
 
           <div class="actions">
             <button class="btn secondary" style="visibility:hidden">← Volver</button>
-            <button class="btn" onclick="saveProfile()">Begin Finder →</button>
+            <button class="btn" onclick="saveProfile()">Continuar →</button>
           </div>
           <div class="confidential">♢ Value first: the MPA Flow does not require contact details to see a result.</div>
         </div>
@@ -1276,7 +1261,7 @@ function renderQuestion(){
           <div class="path"></div>
           <div class="caption">
             <p>${q.art}</p>
-            <span>Foundation First Learning & Launch System</span>
+            <span>MPA Flow · lectura del sistema</span>
           </div>
         </div>
       </div>
@@ -1308,7 +1293,7 @@ function renderQuestion(){
           <button class="btn secondary" onclick="back()">← Volver</button>
           <button class="btn" id="nextBtn" ${selected !== null && selected !== undefined ? '' : 'disabled'} onclick="next()">Siguiente →</button>
         </div>
-        <div class="confidential">♢ Your answers are confidential and used to personalize your result.</div>
+        <div class="confidential">♢ Tus respuestas son confidenciales y sólo se usan para orientar esta lectura.</div>
       </div>
 
       <div class="art-card">
@@ -1316,7 +1301,7 @@ function renderQuestion(){
         <div class="path"></div>
         <div class="caption">
           <p>${q.art}</p>
-          <span>Foundation First Learning & Launch System</span>
+          <span>MPA Flow · lectura del sistema</span>
         </div>
       </div>
     </div>
@@ -1333,23 +1318,23 @@ function renderQuestion(){
 
 function businessOptions(selected){
   const opts = [
-    ['contractor','Contractor / Construction'],
-    ['trade','Trade / Service Business'],
-    ['builder','Builder / Developer'],
-    ['professional','Professional Services'],
-    ['family','Family Business'],
-    ['other','Other']
+    ['contractor','Construcción'],
+    ['trade','Servicios'],
+    ['builder','Desarrollo'],
+    ['professional','Servicios profesionales'],
+    ['family','Empresa familiar'],
+    ['other','Otra organización']
   ];
   return opts.map(([v,l])=>`<option value="${v}" ${selected===v?'selected':''}>${l}</option>`).join('');
 }
 
 function goalOptions(selected){
   const opts = [
-    ['more-clients','More clients / demand'],
-    ['better-systems','Better systems'],
-    ['stronger-team','Stronger team'],
-    ['better-alignment','Better alignment'],
-    ['scale','Scale or transition'],
+    ['more-clients','Más oportunidades'],
+    ['better-systems','Una operación más clara'],
+    ['stronger-team','Más autonomía del equipo'],
+    ['better-alignment','Una dirección compartida'],
+    ['scale','Crecer o cambiar de etapa'],
   ];
   return opts.map(([v,l])=>`<option value="${v}" ${selected===v?'selected':''}>${l}</option>`).join('');
 }
@@ -1378,44 +1363,44 @@ function renderResult(){
             <div class="badge">${o.title}</div>
             <div class="result-title">${o.module}</div>
             <p class="result-copy">${o.text}</p>
-            <p class="hint" style="margin-top:16px;margin-bottom:0"><strong>Contexto del sistema:</strong> ${businessLabels[state.lead.businessType] || 'Business'} · Goal: ${goalLabel(state.lead.goal)} · result generated from your answers.</p>
+            <p class="hint" style="margin-top:16px;margin-bottom:0"><strong>Contexto del sistema:</strong> ${businessLabels[state.lead.businessType] || 'Organización'} · Objetivo: ${goalLabel(state.lead.goal)} · lectura generada a partir de tus respuestas.</p>
           </div>
           <div class="round-art"></div>
         </div>
 
         <div class="panel">
-          <h3>Why this matters now</h3>
+          <h3>Por qué importa ahora</h3>
           <ul class="why-list">
             ${o.why.map((w,i)=>`<li><span>${['☉','↻','♧'][i]}</span><span>${w}</span></li>`).join('')}
           </ul>
         </div>
 
         <div class="panel">
-          <h3>Recommended next step</h3>
+          <h3>Próximo paso recomendado</h3>
           <p class="hint" style="margin-bottom:0">${o.next}</p>
         </div>
 
         <div class="panel">
-          <h3>Your Next 30 Days</h3>
-          <p class="hint">A practical action path based on your result. This is designed to be useful even if the reader never books a session.</p>
+          <h3>Tu próximo ciclo</h3>
+          <p class="hint">Una secuencia práctica para mover esta lectura a una primera acción concreta.</p>
           <ul class="why-list">
             ${actionPlan(key).map((item,i)=>`<li><span>${['01','02','03'][i]}</span><span><b>${item.title}</b><br>${item.text}</span></li>`).join('')}
           </ul>
         </div>
 
         <div class="panel">
-          <h3>Free ways to keep exploring</h3>
-          <p class="hint">The next step is not always a service. Sometimes the right next step is a chapter, a reflection, a framework, or one focused business conversation with your team.</p>
+          <h3>Recursos para seguir explorando</h3>
+          <p class="hint">La orientación puede abrir una conversación, un mapa de trabajo o un primer experimento con tu equipo.</p>
           <div class="resources">
-            <div class="resource"><small>Read</small><h4>${o.resources[0]}</h4><p>Recommended chapter or book section.</p></div>
-            <div class="resource"><small>Watch / Listen</small><h4>${o.resources[1]}</h4><p>Related reflection from The Craft & Calling.</p></div>
-            <div class="resource"><small>Apply</small><h4>${o.resources[2]}</h4><p>A practical worksheet or framework.</p></div>
+            <div class="resource"><small>Observar</small><h4>${o.resources[0]}</h4><p>Una pregunta para mirar el sistema con más precisión.</p></div>
+            <div class="resource"><small>Conversar</small><h4>${o.resources[1]}</h4><p>Una forma de poner la lectura en común.</p></div>
+            <div class="resource"><small>Configurar</small><h4>${o.resources[2]}</h4><p>Una herramienta para pasar de la lectura a la acción.</p></div>
           </div>
         </div>
 
         <div class="journey-unlock">
           <div class="unlock-label">🔓 New module unlocked</div>
-          <div class="journey-title">Start Your <span>${journey.title}</span></div>
+          <div class="journey-title">Tu recorrido: <span>${journey.title}</span></div>
           <p class="journey-copy">${journey.short}</p>
 
           <div class="journey-phases">
@@ -1432,40 +1417,40 @@ function renderResult(){
             ${journey.includes.map(i=>`<div>${i}</div>`).join('')}
           </div>
 
-          <button class="btn" onclick="openJourneyModal('${key}')">Unlock Journey →</button>
+          <button class="btn" onclick="openJourneyModal('${key}')">Ver recorrido →</button>
         </div>
 
         <div class="panel">
-          <h3>Want to go deeper?</h3>
-          <p class="hint">Some practitioners prefer to apply the resources on their own. Others find it useful to explore their specific situation in conversation.</p>
-          <button class="btn secondary" onclick="alert('Prototype: Learn more about Strategic Clarity Sessions')">Learn More About Strategic Clarity Sessions</button>
+          <h3>¿Querés profundizar?</h3>
+          <p class="hint">Si esta lectura te resulta familiar, podemos convertirla en un mapa de trabajo para tu organización.</p>
+          <button class="btn secondary" onclick="alert('Podés escribirnos desde la sección de contacto de MPA Flow.')">Conversar sobre tu sistema</button>
         </div>
 
         <div class="panel">
-          <h3>Tu mapa de evolución Snapshot</h3>
-          <p class="hint">This simulated prototype changes the result based on the selected answers.</p>
+          <h3>Tu mapa de evolución</h3>
+          <p class="hint">Una lectura orientativa de las fuerzas que hoy están moviendo tu sistema.</p>
           <div class="snapshot">
-            ${metric('Visibility & Demand', o.scores.growth)}
-            ${metric('Structure & Systems', o.scores.structure)}
-            ${metric('Leadership & Team', o.scores.leadership)}
-            ${metric('Strategic Clarity', o.scores.clarity)}
+            ${metric('Demanda', o.scores.growth)}
+            ${metric('Procesos', o.scores.structure)}
+            ${metric('Talento', o.scores.leadership)}
+            ${metric('Organización', o.scores.clarity)}
           </div>
         </div>
 
         <div class="panel">
-          <h3>Foundation First Intelligence Layer</h3>
-          <p class="hint">Even without asking for contact details upfront, the tool can still generate useful anonymous audience patterns: business type, goal, friction, growth opportunity, and resource interest.</p>
+          <h3>Una orientación, no una etiqueta</h3>
+          <p class="hint">Este resultado no encierra tu organización en una categoría: señala dónde conviene mirar primero y qué conversación puede abrirse.</p>
           <div class="intel-grid">
-            <div class="intel-card"><small>Contexto del sistema</small><strong>${businessLabels[state.lead.businessType]}</strong><span>Anonymous audience segment</span></div>
-            <div class="intel-card"><small>Main goal</small><strong>${goalLabel(state.lead.goal)}</strong><span>Useful for future content and resources</span></div>
-            <div class="intel-card"><small>Growth opportunity</small><strong>${o.module}</strong><span>${o.name}</span></div>
-            <div class="intel-card"><small>Signal type</small><strong>Anonymous first</strong><span>Contact capture remains optional</span></div>
+            <div class="intel-card"><small>Contexto</small><strong>${businessLabels[state.lead.businessType]}</strong><span>Desde dónde estás mirando</span></div>
+            <div class="intel-card"><small>Objetivo</small><strong>${goalLabel(state.lead.goal)}</strong><span>Qué querés mover primero</span></div>
+            <div class="intel-card"><small>Señal principal</small><strong>${o.module}</strong><span>${o.name}</span></div>
+            <div class="intel-card"><small>Próxima conversación</small><strong>Observar → configurar</strong><span>Un primer paso posible</span></div>
           </div>
         </div>
 
         <div class="actions">
           <button class="btn secondary" onclick="back()">← Volver</button>
-          <button class="btn secondary" onclick="restart()">Start New Finder</button>
+          <button class="btn secondary" onclick="restart()">Empezar otra orientación</button>
         </div>
       </div>
 
