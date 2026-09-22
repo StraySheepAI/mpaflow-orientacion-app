@@ -1104,6 +1104,14 @@ const modules = [
   {key:'scale', name:'Evolución', sub:'Preparar el próximo momento del sistema', icon:'⌁'}
 ];
 
+const serviceMatches = {
+  growth:{service:'Claridad de propuesta y demanda', product:'Mapa de posicionamiento + plan de 21 días', text:'Ordenamos el valor que ofrecés y diseñamos un camino de llegada más claro para las personas correctas.'},
+  structure:{service:'Arquitectura de procesos y flujo operativo', product:'Mapa de flujo + sistema básico de operación', text:'Hacemos visible cómo se mueve el trabajo, dónde se corta y qué proceso conviene configurar primero.'},
+  leadership:{service:'Liderazgo, decisiones y autonomía', product:'Mapa de ownership + plan de transferencia', text:'Distribuimos criterio y responsabilidad para que el sistema no dependa de una sola persona.'},
+  alignment:{service:'Alineación organizacional', product:'Mapa de prioridades + tablero de decisiones', text:'Conectamos prioridades, conversaciones, tecnología y ejecución para que el esfuerzo avance en una misma dirección.'},
+  scale:{service:'Diseño del próximo momento', product:'Roadmap de evolución + sistema de capacidades', text:'Definimos qué necesita el sistema para crecer sin romper lo que ya funciona.'}
+};
+
 let state = { step:0, answers:{}, selections:{}, lead:{} };
 
 const businessLabels = {
@@ -1384,6 +1392,14 @@ function renderResult(){
           <p class="hint" style="margin-bottom:0">${o.next}</p>
         </div>
 
+        <div class="panel service-match">
+          <div class="badge">Cómo podemos ayudarte</div>
+          <h3>${serviceMatches[key].service}</h3>
+          <p class="hint" style="margin-bottom:12px">${serviceMatches[key].text}</p>
+          <div class="resource"><small>Producto o sistema inicial</small><h4>${serviceMatches[key].product}</h4><p>Una primera intervención concreta para convertir esta orientación en movimiento medible.</p></div>
+          <button class="btn secondary" onclick="alert('Podés escribirnos desde la sección de contacto de MPA Flow para conversar sobre este próximo paso.')">Conversar sobre este próximo paso →</button>
+        </div>
+
         <div class="panel">
           <h3>Tu próximo ciclo</h3>
           <p class="hint">Una secuencia práctica para mover esta lectura a una primera acción concreta.</p>
@@ -1625,21 +1641,39 @@ function closeJourneyModal(){
 function downloadJourney(){
   const key = activeJourneyKey || dominant();
   const j = journeys[key];
-  const content = [
-    'MPA Flow — ' + j.title,
-    '',
-    j.short,
-    '',
-    'PHASES',
-    ...j.phases.map(p => p[0] + ' — ' + p[1] + ': ' + p[2]),
-    '',
-    'INCLUDES',
-    ...j.includes.map(i => '- ' + i),
-    '',
-    'This is a prototype download. In production this would generate a branded PDF guide.'
-  ].join('\n');
-
-  const blob = new Blob([content], {type:'text/plain'});
+  const rawLines = [
+    'MPA Flow - ' + j.title,
+    '', j.short, '',
+    'RECORRIDO',
+    ...j.phases.map(p => p[0] + ' - ' + p[1] + ': ' + p[2]),
+    '', 'INCLUYE', ...j.includes.map(i => '- ' + i),
+    '', 'Una primera orientacion para convertir observacion en accion.'
+  ];
+  const ascii = value => value.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[–—·]/g,'-');
+  const lines = rawLines.flatMap(line => {
+    const text = ascii(line);
+    if (!text) return [''];
+    const words = text.split(' '), out=[]; let current='';
+    words.forEach(word => { if ((current+' '+word).trim().length > 86) { out.push(current); current=word; } else current=(current+' '+word).trim(); });
+    if (current) out.push(current); return out;
+  });
+  const esc = value => value.replace(/\\/g,'\\\\').replace(/\(/g,'\\(').replace(/\)/g,'\\)');
+  let stream = 'BT\n/F1 14 Tf\n50 780 Td\n';
+  lines.forEach((line,index) => { if(index) stream += '0 -20 Td\n'; stream += '('+esc(line)+') Tj\n'; });
+  stream += 'ET';
+  const objects = [
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>',
+    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+    '<< /Length '+stream.length+' >>\nstream\n'+stream+'\nendstream'
+  ];
+  let pdf = '%PDF-1.4\n', offsets = [0];
+  objects.forEach((object,index) => { offsets[index+1]=pdf.length; pdf += (index+1)+' 0 obj\n'+object+'\nendobj\n'; });
+  const xref = pdf.length; pdf += 'xref\n0 '+(objects.length+1)+'\n0000000000 65535 f \n';
+  offsets.slice(1).forEach(offset => { pdf += String(offset).padStart(10,'0')+' 00000 n \n'; });
+  pdf += 'trailer\n<< /Size '+(objects.length+1)+' /Root 1 0 R >>\nstartxref\n'+xref+'\n%%EOF';
+  const blob = new Blob([pdf], {type:'application/pdf'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   const safeName = j.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -1691,7 +1725,7 @@ renderBookIntro();
 
     <div class="actions">
       <button class="btn secondary" onclick="closeJourneyModal()">Close</button>
-      <button class="btn" onclick="downloadJourney()">Download Journey →</button>
+      <button class="btn" onclick="downloadJourney()">Descargar plan en PDF →</button>
     </div>
 
     <div style="height:1px;background:var(--line);margin:22px 0"></div>
