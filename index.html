@@ -879,6 +879,7 @@
     .shell{background:rgba(10,2,17,.92);border-color:#3d1b4e;box-shadow:0 28px 90px rgba(0,0,0,.5)}
     aside{border-color:#3d1b4e;background:linear-gradient(180deg,rgba(46,12,65,.62),rgba(10,2,17,.82))}
     .mark{background:rgba(24,7,34,.8);border-color:var(--gold);color:var(--gold)}
+    .logo-mark{width:66px;height:66px;object-fit:contain;display:block;margin-bottom:10px;filter:drop-shadow(0 0 12px rgba(226,60,255,.35))}
     .brand-title{color:#eee4f3}.brand-sub,.micro,.progress-card small,.unlock-label,.phase-card small{color:#df7cff}
     .progress-card,.quote,.question-card,.option,.art-card,.panel,.journey-unlock,.phase-card,.modal-card{background:rgba(19,6,28,.72);border-color:#5b2b72}
     .progress-bar{background:#35163f}.progress-fill{background:linear-gradient(90deg,#cf2eff,#d9a85d)}
@@ -887,6 +888,7 @@
     .book-origin-card{background:linear-gradient(145deg,rgba(29,8,43,.97),rgba(10,2,17,.99));border-color:#6a337f;box-shadow:0 20px 60px rgba(0,0,0,.4)}
     .lead-form label{color:#efb2ff}.lead-form input,.lead-form select{background:#160622;color:#fff;border-color:#a657d0;box-shadow:inset 0 0 0 1px rgba(226,60,255,.12)}.lead-form select option{background:#160622;color:#fff}.lead-form input:focus,.lead-form select:focus{border-color:#f08cff;box-shadow:0 0 0 3px rgba(226,60,255,.18)}.privacy-note,.confidential{color:#d8c8df}.art-card{background:linear-gradient(145deg,rgba(25,7,37,.98),rgba(9,2,16,.99));border-color:#6a337f}.art-card .caption{background:rgba(12,3,19,.92);border-color:#8b4ba8;color:#f2eafa}.caption p{color:#f2eafa}.caption span{color:#efb2ff}.landscape{opacity:.5}
     .book-origin-card h1,.book-origin-card .lead{color:#f2eafa}.book-flow div{background:rgba(12,3,19,.82);border-color:#5b2b72;color:#b5a5c0}.book-flow strong{color:#efb2ff}.origin-note{color:#a893b3}
+    .flow-method{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 8px}.flow-method article{padding:12px 10px;border:1px solid #5b2b72;border-radius:14px;background:rgba(12,3,19,.82)}.flow-method b{display:block;font-family:'Cormorant Garamond',serif;font-size:26px;color:#efb2ff;margin-bottom:4px}.flow-method strong{display:block;color:#f2eafa;font-size:11px;margin-bottom:6px}.flow-method span{display:block;color:#b5a5c0;font-size:10px;line-height:1.4}@media(max-width:1050px){.flow-method{grid-template-columns:repeat(2,1fr)}}
     .system-visual{position:relative;min-height:420px;border-radius:22px;overflow:hidden;background:radial-gradient(circle at center,rgba(200,80,255,.2),transparent 28%),linear-gradient(150deg,#190829,#08020f);border:1px solid #6a337f;box-shadow:0 20px 60px rgba(0,0,0,.4)}
     .system-visual:before{content:'LECTURA DEL SISTEMA';position:absolute;top:24px;left:26px;color:#efb2ff;letter-spacing:.18em;font-size:10px}.flow-orbit{position:absolute;inset:16% 15%;border:1px solid rgba(226,60,255,.24);border-radius:50%}.orbit-b{inset:25% 24%;border-color:rgba(217,168,93,.35)}
     .flow-line{position:absolute;background:linear-gradient(90deg,transparent,#c77bff,transparent);opacity:.75}.line-top,.line-bottom{width:2px;height:63%;left:50%;top:18%}.line-right,.line-left{height:2px;width:63%;top:50%;left:18%}.flow-node{position:absolute;width:95px;height:95px;border:1px solid #a657d0;border-radius:50%;display:grid;place-items:center;align-content:center;gap:5px;background:rgba(16,4,24,.9);box-shadow:0 0 20px rgba(226,60,255,.25);color:#f2eafa;text-align:center}.flow-node span{font-size:26px;color:#efb2ff}.flow-node small{font-size:8px;letter-spacing:.12em}.node-org{top:12%;left:calc(50% - 47px)}.node-tech{right:9%;top:calc(50% - 47px)}.node-talent{bottom:12%;left:calc(50% - 47px)}.node-process{left:9%;top:calc(50% - 47px)}
@@ -901,7 +903,7 @@
   <div class="shell">
     <aside>
       <div class="logo">
-        <div class="mark">M</div>
+        <img class="logo-mark" src="mpa-flow-logo.png" alt="MPA Flow">
         <div class="brand-title">MPA<br>Flow</div>
         <div class="brand-sub">MPA Flow · Orientación</div>
       </div>
@@ -1194,11 +1196,11 @@ function renderBookIntro(){
           Ayuda a reconocer dónde aparece la fricción y qué conviene mirar antes de intervenir.
         </p>
 
-        <div class="book-flow">
-          <div><strong>Observar</strong>Reconocer el momento concreto del sistema.</div>
-          <div><strong>Orientar</strong>Nombrar la fricción que hoy limita el movimiento.</div>
-          <div><strong>Configurar</strong>Conectar procesos, tecnología y talento.</div>
-          <div><strong>Evolucionar</strong>Elegir un próximo paso posible y sostenible.</div>
+        <div class="flow-method" aria-label="Método FLOW">
+          <article><b>F</b><strong>Friction</strong><span>Facts · Function</span></article>
+          <article><b>L</b><strong>Leadership</strong><span>Leverage · Learning</span></article>
+          <article><b>O</b><strong>Ownership</strong><span>Outcomes · Orchestration</span></article>
+          <article><b>W</b><strong>Wisdom</strong><span>Ways of Working · What remains</span></article>
         </div>
 
         <div class="actions">
