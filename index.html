@@ -891,6 +891,7 @@
     .system-visual:before{content:'LECTURA DEL SISTEMA';position:absolute;top:24px;left:26px;color:#efb2ff;letter-spacing:.18em;font-size:10px}.flow-orbit{position:absolute;inset:16% 15%;border:1px solid rgba(226,60,255,.24);border-radius:50%}.orbit-b{inset:25% 24%;border-color:rgba(217,168,93,.35)}
     .flow-line{position:absolute;background:linear-gradient(90deg,transparent,#c77bff,transparent);opacity:.75}.line-top,.line-bottom{width:2px;height:63%;left:50%;top:18%}.line-right,.line-left{height:2px;width:63%;top:50%;left:18%}.flow-node{position:absolute;width:95px;height:95px;border:1px solid #a657d0;border-radius:50%;display:grid;place-items:center;align-content:center;gap:5px;background:rgba(16,4,24,.9);box-shadow:0 0 20px rgba(226,60,255,.25);color:#f2eafa;text-align:center}.flow-node span{font-size:26px;color:#efb2ff}.flow-node small{font-size:8px;letter-spacing:.12em}.node-org{top:12%;left:calc(50% - 47px)}.node-tech{right:9%;top:calc(50% - 47px)}.node-talent{bottom:12%;left:calc(50% - 47px)}.node-process{left:9%;top:calc(50% - 47px)}
     .flow-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;display:grid;place-items:center;align-content:center;text-align:center;border-radius:50%;background:radial-gradient(circle,#512066,#1a0728);border:1px solid #e273ff;box-shadow:0 0 38px rgba(226,60,255,.4),inset 0 0 25px rgba(226,60,255,.18)}.flow-core b{font-family:'Cormorant Garamond',serif;font-size:40px;color:#f2eafa;letter-spacing:.08em}.flow-core small{font-size:9px;color:#e3bd78;letter-spacing:.08em;max-width:100px}@media(max-width:1050px){.system-visual{min-height:300px}}
+    .hero-result{background:linear-gradient(145deg,rgba(29,8,43,.98),rgba(10,2,17,.99));border-color:#6a337f;box-shadow:0 20px 60px rgba(0,0,0,.35)}.result-title{color:#efb2ff}.result-copy{color:#f2eafa}.hero-result .hint{color:#d8c8df}.hero-result .hint strong{color:#fff}.panel{background:rgba(19,6,28,.9);border-color:#5b2b72}.panel h3{color:#f2eafa}.why-list li{color:#d8c8df}.why-list b{color:#fff}.video,.resource,.intel-card{background:rgba(19,6,28,.9);border-color:#5b2b72}.video-body h3,.resource h4,.intel-card strong{color:#f2eafa}.video-body p,.resource p,.intel-card span{color:#d8c8df}.journey-unlock{background:linear-gradient(145deg,#2a0d3a,#13051d);border-color:#8b4ba8}.journey-copy{color:#d8c8df}
     h1,h2,.question-card h2,.journey-title,.modal-card h2{color:#f2eafa}.screen,.question-card{background:linear-gradient(135deg,rgba(42,13,58,.85),rgba(14,4,22,.92));border-color:#6a337f;box-shadow:0 18px 50px rgba(0,0,0,.32)}h1 em,.journey-title span{color:#e273ff}
     .option{background:rgba(12,3,19,.78);color:#eee4f3}.option:hover,.option.selected{border-color:#e23cff;background:rgba(66,18,84,.65);box-shadow:0 10px 30px rgba(226,60,255,.12)}.option .icon{background:rgba(226,60,255,.12);color:#e273ff}.option .copy strong{color:#f2eafa}.option .copy span{color:#b5a5c0}.radio{border-color:#7c568b}.option.selected .radio{background:#e23cff;border-color:#e23cff}
     .art-card{background:linear-gradient(180deg,rgba(27,8,37,.45),rgba(16,4,25,.95)),radial-gradient(circle at 70% 30%,rgba(190,75,255,.28),transparent 26%)}.landscape{opacity:.62;filter:hue-rotate(260deg) saturate(1.4)}.btn,.cta{background:linear-gradient(100deg,#d523f0,#ef58ff);color:#fff}.confidential{color:#a893b3}.back{color:#b5a5c0}
@@ -1047,7 +1048,7 @@ const outcomes = {
 
 const journeys = {
   growth:{
-    title:'Recorrido de demanda y posicionamiento', short:'Ordená tu propuesta y construí un ritmo de llegada sostenible.', focus:'Demanda',
+    title:'Semana de análisis: demanda y posicionamiento', short:'Ordená tu propuesta y construí un ritmo de llegada sostenible.', focus:'Demanda',
     phases:[
       ['Etapa 1','Observar','Reconocer dónde el valor se entiende, se pierde o se contradice.'],
       ['Etapa 2','Configurar','Ordenar propuesta, evidencia y camino hacia la consulta.'],
@@ -1056,7 +1057,7 @@ const journeys = {
     includes:['Mapa de propuesta','Historias de valor','Acciones de visibilidad','Ritmo de contenidos']
   },
   structure:{
-    title:'Recorrido de procesos y operación', short:'Convertí el conocimiento disperso en un flujo visible y repetible.', focus:'Procesos',
+    title:'Semana de análisis: procesos y operación', short:'Convertí el conocimiento disperso en un flujo visible y repetible.', focus:'Procesos',
     phases:[
       ['Etapa 1','Observar','Mapear la fricción, los cortes y las decisiones recurrentes.'],
       ['Etapa 2','Configurar','Documentar un flujo crítico y clarificar responsabilidades.'],
@@ -1065,7 +1066,7 @@ const journeys = {
     includes:['Mapa de flujo','Checklist de delegación','Ritmo operativo','Preguntas de revisión']
   },
   leadership:{
-    title:'Recorrido de talento y decisiones', short:'Distribuí criterio para que el sistema no dependa de una sola persona.', focus:'Talento',
+    title:'Semana de análisis: talento y decisiones', short:'Distribuí criterio para que el sistema no dependa de una sola persona.', focus:'Talento',
     phases:[
       ['Etapa 1','Observar','Identificar dónde las decisiones todavía esperan una persona.'],
       ['Etapa 2','Configurar','Clarificar roles, criterio y límites de decisión.'],
@@ -1074,7 +1075,7 @@ const journeys = {
     includes:['Auditoría de decisiones','Mapa de autonomía','Preguntas de liderazgo','Guía de conversación']
   },
   alignment:{
-    title:'Recorrido de dirección compartida', short:'Conectá prioridades, personas, tecnología y ejecución.', focus:'Alineación',
+    title:'Semana de análisis: dirección compartida', short:'Conectá prioridades, personas, tecnología y ejecución.', focus:'Alineación',
     phases:[
       ['Etapa 1','Observar','Reconocer dónde el esfuerzo se dispersa o compiten prioridades.'],
       ['Etapa 2','Configurar','Elegir un foco compartido y explicitar renuncias.'],
@@ -1083,7 +1084,7 @@ const journeys = {
     includes:['Mapa de prioridades','Foco de equipo','Checklist de ejecución','Ritmo de reuniones']
   },
   scale:{
-    title:'Recorrido de evolución y escala', short:'Prepará el sistema para crecer sin romper lo que ya funciona.', focus:'Evolución',
+    title:'Semana de análisis: evolución y escala', short:'Prepará el sistema para crecer sin romper lo que ya funciona.', focus:'Evolución',
     phases:[
       ['Etapa 1','Observar','Identificar qué hay que proteger antes de acelerar.'],
       ['Etapa 2','Configurar','Mapear capacidad, riesgos y condiciones del próximo momento.'],
@@ -1492,11 +1493,11 @@ function consultingMatch(key){
 
 function goalLabel(goal){
   const labels = {
-    'more-clients':'More clients / demand',
-    'better-systems':'Better systems',
-    'stronger-team':'Stronger team',
-    'better-alignment':'Better alignment',
-    'scale':'Scale or transition'
+    'more-clients':'Demanda y posicionamiento',
+    'better-systems':'Procesos y operación',
+    'stronger-team':'Talento y autonomía',
+    'better-alignment':'Organización y prioridades',
+    'scale':'Evolución y escala'
   };
   return labels[goal] || goal;
 }
@@ -1552,29 +1553,29 @@ function downloadSubmissions(){
 function actionPlan(key){
   const plans = {
     growth:[
-      {title:'Clarify the promise', text:'Write one sentence that explains who you help, what changes, and why it matters.'},
-      {title:'Collect one proof point', text:'Choose one customer story, result, or moment that shows your value in real language.'},
-      {title:'Create one visibility rhythm', text:'Pick one channel and one repeatable weekly action to make the business easier to find.'}
+      {title:'Clarificar la promesa', text:'Escribí una frase que explique a quién ayudás, qué cambia y por qué importa.'},
+      {title:'Reunir una evidencia', text:'Elegí una historia o resultado que muestre el valor en lenguaje real.'},
+      {title:'Crear un ritmo de llegada', text:'Elegí un canal y una acción semanal repetible para hacer visible tu propuesta.'}
     ],
     structure:[
-      {title:'Name the repeated friction', text:'Identify one process that keeps creating confusion, delay, or founder dependency.'},
-      {title:'Document the current path', text:'Map how the work actually happens today before trying to improve it.'},
-      {title:'Transfer one ownership point', text:'Choose one decision or task that should no longer depend on the founder.'}
+      {title:'Nombrar la fricción', text:'Identificá un proceso que siga generando confusión, demora o dependencia.'},
+      {title:'Mapear el recorrido actual', text:'Registrá cómo sucede hoy el trabajo antes de intentar mejorarlo.'},
+      {title:'Transferir una responsabilidad', text:'Elegí una decisión o tarea que ya no debería depender de una sola persona.'}
     ],
     leadership:[
-      {title:'Identify decision bottlenecks', text:'List the decisions that still wait for one person and separate what truly needs founder input.'},
-      {title:'Clarify ownership', text:'Define who owns one key outcome, not just who performs the task.'},
-      {title:'Create a leadership rhythm', text:'Set one recurring conversation for priorities, decisions, and accountability.'}
+      {title:'Detectar cuellos de decisión', text:'Listá las decisiones que todavía esperan a una persona.'},
+      {title:'Clarificar autonomía', text:'Definí quién responde por un resultado, no sólo quién ejecuta una tarea.'},
+      {title:'Crear un ritmo de liderazgo', text:'Instalá una conversación recurrente para prioridades, decisiones y seguimiento.'}
     ],
     alignment:[
-      {title:'Name the competing priorities', text:'Identify where teams, messaging, operations, or leadership are solving different problems.'},
-      {title:'Choose the shared focus', text:'Pick one priority that should guide the next 30 days.'},
-      {title:'Connect action to strategy', text:'Make sure every active initiative supports the same growth direction.'}
+      {title:'Nombrar prioridades en conflicto', text:'Identificá dónde las partes del sistema están resolviendo problemas distintos.'},
+      {title:'Elegir un foco compartido', text:'Elegí una prioridad que guíe la próxima semana de trabajo.'},
+      {title:'Conectar acción y dirección', text:'Verificá que cada iniciativa activa apoye el mismo rumbo.'}
     ],
     scale:[
-      {title:'Protect what works', text:'Identify what must not break as the business grows.'},
-      {title:'Map the next stage', text:'Define what growth requires next: people, process, visibility, leadership, or capital.'},
-      {title:'Sequence the work', text:'Choose what must happen before adding more complexity.'}
+      {title:'Proteger lo que funciona', text:'Identificá qué no debería romperse mientras el sistema crece.'},
+      {title:'Mapear la próxima etapa', text:'Definí qué capacidades hacen falta: personas, procesos, tecnología o dirección.'},
+      {title:'Ordenar los movimientos', text:'Elegí qué debe suceder antes de sumar más complejidad.'}
     ]
   };
   return plans[key] || plans.structure;
@@ -1606,10 +1607,10 @@ function openJourneyModal(key){
   document.getElementById('modalTitle').innerText = j.title;
   document.getElementById('modalCopy').innerText = 'Your ' + j.focus + ' journey is unlocked. Download the guide now, or optionally send a copy by email.';
   document.getElementById('modalList').innerHTML = [
-    '33-day evolution guide',
-    'Reflection workbook',
-    'Weekly checkpoints',
-    'Recommended resources'
+    '7 días de análisis guiado',
+    'Mapa de fricción',
+    'Preguntas de observación',
+    'Próximo paso recomendado'
   ].map(x=>'<div>'+x+'</div>').join('');
   document.getElementById('journeyModal').style.display = 'block';
 }
