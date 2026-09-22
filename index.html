@@ -885,6 +885,7 @@
     .step{color:#866c94}.step h4{color:#eee4f3}.step p,.hint,.lead,.journey-copy,.phase-card p{color:#b5a5c0}.step-num{background:#12051b;border-color:#69317f;color:#d9a85d}.step.active .step-num{background:#d832ee;border-color:#d832ee}.step.done .step-num{background:#b28a4f;border-color:#b28a4f}.quote{background:rgba(24,7,34,.8)}.quote p{color:#eee4f3}.quote span{color:#d47af2}
     .ghost-link{background:rgba(18,5,27,.75);border-color:#5b2b72;color:#d47af2}
     .book-origin-card{background:linear-gradient(145deg,rgba(29,8,43,.97),rgba(10,2,17,.99));border-color:#6a337f;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+    .lead-form label{color:#efb2ff}.lead-form input,.lead-form select{background:#160622;color:#fff;border-color:#a657d0;box-shadow:inset 0 0 0 1px rgba(226,60,255,.12)}.lead-form select option{background:#160622;color:#fff}.lead-form input:focus,.lead-form select:focus{border-color:#f08cff;box-shadow:0 0 0 3px rgba(226,60,255,.18)}.privacy-note,.confidential{color:#d8c8df}.art-card{background:linear-gradient(145deg,rgba(25,7,37,.98),rgba(9,2,16,.99));border-color:#6a337f}.art-card .caption{background:rgba(12,3,19,.92);border-color:#8b4ba8;color:#f2eafa}.caption p{color:#f2eafa}.caption span{color:#efb2ff}.landscape{opacity:.5}
     .book-origin-card h1,.book-origin-card .lead{color:#f2eafa}.book-flow div{background:rgba(12,3,19,.82);border-color:#5b2b72;color:#b5a5c0}.book-flow strong{color:#efb2ff}.origin-note{color:#a893b3}
     .system-visual{position:relative;min-height:420px;border-radius:22px;overflow:hidden;background:radial-gradient(circle at center,rgba(200,80,255,.2),transparent 28%),linear-gradient(150deg,#190829,#08020f);border:1px solid #6a337f;box-shadow:0 20px 60px rgba(0,0,0,.4)}
     .system-visual:before{content:'LECTURA DEL SISTEMA';position:absolute;top:24px;left:26px;color:#efb2ff;letter-spacing:.18em;font-size:10px}.flow-orbit{position:absolute;inset:16% 15%;border:1px solid rgba(226,60,255,.24);border-radius:50%}.orbit-b{inset:25% 24%;border-color:rgba(217,168,93,.35)}
@@ -1103,12 +1104,12 @@ const modules = [
 let state = { step:0, answers:{}, selections:{}, lead:{} };
 
 const businessLabels = {
-  contractor: 'Construcción',
-  trade: 'Servicios',
-  builder: 'Desarrollo',
-  professional: 'Servicios profesionales',
-  family: 'Empresa familiar',
-  other: 'Otra organización'
+  contractor: 'Crecimiento y capacidad',
+  trade: 'Etapa de cambio',
+  builder: 'Dependencia del liderazgo',
+  professional: 'Dirección compartida',
+  family: 'Preparación del próximo salto',
+  other: 'Fluidez y foco'
 };
 
 const submissions = JSON.parse(localStorage.getItem('ff_growth_submissions') || '[]');
@@ -1234,13 +1235,13 @@ function renderQuestion(){
             <p class="hint">No pedimos nombre ni correo para orientarte. Primero recibís una lectura útil; los datos de contacto son opcionales al final.</p>
             <div class="lead-form">
               <div class="field wide">
-                <label>Tipo de organización</label>
+                <label>Momento del sistema</label>
                 <select id="leadBusiness">
                   ${businessOptions(state.lead.businessType)}
                 </select>
               </div>
               <div class="field wide">
-                <label>Objetivo principal hoy</label>
+                <label>¿Qué te gustaría destrabar primero?</label>
                 <select id="leadGoal">
                   ${goalOptions(state.lead.goal)}
                 </select>
@@ -1253,7 +1254,7 @@ function renderQuestion(){
             <button class="btn secondary" style="visibility:hidden">← Volver</button>
             <button class="btn" onclick="saveProfile()">Continuar →</button>
           </div>
-          <div class="confidential">♢ Value first: the MPA Flow does not require contact details to see a result.</div>
+        <div class="confidential">♢ MPA Flow no requiere datos de contacto para mostrarte el resultado.</div>
         </div>
 
         <div class="art-card">
@@ -1318,23 +1319,23 @@ function renderQuestion(){
 
 function businessOptions(selected){
   const opts = [
-    ['contractor','Construcción'],
-    ['trade','Servicios'],
-    ['builder','Desarrollo'],
-    ['professional','Servicios profesionales'],
-    ['family','Empresa familiar'],
-    ['other','Otra organización']
+    ['contractor','Estamos creciendo y la operación empieza a quedar chica'],
+    ['trade','Estamos reordenando una etapa de cambio'],
+    ['builder','El equipo creció, pero todavía depende mucho del liderazgo'],
+    ['professional','Hay varias iniciativas, pero falta dirección compartida'],
+    ['family','Queremos preparar el próximo salto'],
+    ['other','Necesitamos recuperar fluidez y foco']
   ];
   return opts.map(([v,l])=>`<option value="${v}" ${selected===v?'selected':''}>${l}</option>`).join('');
 }
 
 function goalOptions(selected){
   const opts = [
-    ['more-clients','Más oportunidades'],
-    ['better-systems','Una operación más clara'],
-    ['stronger-team','Más autonomía del equipo'],
-    ['better-alignment','Una dirección compartida'],
-    ['scale','Crecer o cambiar de etapa'],
+    ['more-clients','Demanda y posicionamiento'],
+    ['better-systems','Procesos y operación'],
+    ['stronger-team','Talento y autonomía'],
+    ['better-alignment','Organización y prioridades'],
+    ['scale','Evolución y escala'],
   ];
   return opts.map(([v,l])=>`<option value="${v}" ${selected===v?'selected':''}>${l}</option>`).join('');
 }
